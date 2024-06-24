@@ -1,5 +1,5 @@
 // import authRoutes from "./router/auth.js";
-import blog  from "../src/model/blogs.js"; //created a model for blog just for testing
+import {Blog,Tag,Comments,User} from '../src/model/blogs.js'; //created a model for blog just for testing
 function routes(app) {
     app.get("/", (req, res) => {
         res.send("Hello from server");
@@ -8,9 +8,15 @@ function routes(app) {
     // app.use('/auth', authRoutes);
     app.get("/blogs/get/:id",(req,res)=>{
         const id_name=(req.params.id);
-        blog.findById(id_name).then((result) => {
+        Blog.findById(id_name)
+        .populate('comments')  
+        .populate('tags')
+        .then((result) => {
             if(result){
                 res.send(result)
+            }
+            else{
+                res.send("oh Snap X(")
             }
         }).catch((err) => {
             res.send("Something went wrong!Couldn't get the blog ;(")
