@@ -5,8 +5,8 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-console.log(process.env.GOOGLE_OAUTH_CLIENT_ID)
-console.log(process.env.GOOGLE_OAUTH_CLIENT_SECRET)
+// console.log(process.env.GOOGLE_OAUTH_CLIENT_ID)
+// console.log(process.env.GOOGLE_OAUTH_CLIENT_SECRET)
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_OAUTH_CLIENT_ID,
     clientSecret: process.env.GOOGLE_OAUTH_CLIENT_SECRET,
