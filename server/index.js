@@ -23,7 +23,7 @@ app.use(session({ secret: 'YOUR_SESSION_SECRET', resave: false, saveUninitialize
 app.use(passport.initialize());
 app.use(passport.session());
 const PORT = process.env.PORT || 3000;
-const DB = process.env.MONGODB_HOST;
+const DB = process.env.MongoDB_URI;
 
 app.use(cors(corsOptions));
 app.use(express.json()); // Parse JSON bodies for this app
