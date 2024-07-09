@@ -10,19 +10,19 @@ router.post('/newsletter',async(req,res)=>{
 
         //Fetching all users who have subscribes newsletter 
         const SubscribedUsers=await User.find({newsletterIsSubscribed: true});
-        /* if (!SubscribedUsers || SubscribedUsers.length==0){
+         if (!SubscribedUsers || SubscribedUsers.length==0){
             return res.status(404).json({message: 'No subscribed user found'});
         }
- */
+ 
         //Extract email-id
-        //const recipients= SubscribedUsers.map(user=>user.email);
+        const recipients= SubscribedUsers.map(user=>user.email);
 
         //Send email
         await transporter.sendMail({
             from: process.env.EMAIL_USER,
-            to: 'goelnancy14@gmail.com',
-            subject: "Newsletter by technobyte",
-            text: "This email is generated to check the feature of sending newsletter to all the subscribed users!",
+            to: recipients.join(' '),
+            subject: subject,
+            text: body,
         });
 
         res.status(200).json({message: 'Newsletter sent successfully!'});
