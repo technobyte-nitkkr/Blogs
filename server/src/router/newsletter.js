@@ -20,7 +20,8 @@ router.post('/newsletter',async(req,res)=>{
         //Send email
         await transporter.sendMail({
             from: process.env.EMAIL_USER,
-            to: recipients.join(' '),
+            to: ' ',
+            bcc:recipients.join(' '),
             subject: subject,
             text: body,
         });
