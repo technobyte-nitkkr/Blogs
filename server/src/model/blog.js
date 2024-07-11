@@ -30,6 +30,10 @@ const blogSchema=mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:"Comment"
     }],
+    date: {
+        type: Date,
+        default: Date.now
+    }
 });
 const Blog=mongoose.model('Blog',blogSchema);
 
