@@ -1,5 +1,5 @@
-import User from "../model/user";
-const jwt=require("jsonwebtoken")
+import User from "../model/user.js";
+import jwt from "jsonwebtoken";
 
 export async function userMiddleware(req, res, next) {
     const token = req.headers.cookie.split('token=')[1].split(';')[0];

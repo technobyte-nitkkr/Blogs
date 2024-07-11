@@ -1,6 +1,6 @@
 //to do
 //req.body
-import User from "../model/user";
+import User from "../model/user.js";
 
 export function adminMiddleware(req, res, next) {
     const token = req.headers.cookie.split('token=')[1].split(';')[0];

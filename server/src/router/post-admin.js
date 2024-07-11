@@ -1,4 +1,4 @@
-import Blog from "../model/blog";
+import Blog from "../model/blog.js";
 
 export default async function postAdmin(req, res) {
     // const body = req.body; --> { email, password } ??? 
