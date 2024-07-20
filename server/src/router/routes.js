@@ -7,6 +7,7 @@ import newsRoutes from "./newsletter.js";
 import { userMiddleware } from "../middleware/user.middleware.js";
 import blogRoutes from "./blogs.js";
 import commentroute from "./comment.js"
+import { updateBlog } from "../controllers/blog-controller.js";
 function routes(app) {
     app.get("/", (req, res) => {
         res.send("Hello from server");
@@ -18,6 +19,7 @@ function routes(app) {
     app.post("/admin", adminMiddleware, postAdmin);
     app.use("/admin/blog/review/:id", reviewBlog);
     app.use("/blog/search", blogRoutes);
+    app.patch("/blog/update/:id",updateBlog)
 }
 
 export default routes;
