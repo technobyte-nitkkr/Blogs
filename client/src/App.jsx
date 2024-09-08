@@ -1,12 +1,22 @@
 import "./App.css";
+import { Routes, Route } from 'react-router-dom';
+import Landing from "./pages/Home/Landing";
+
+// Pages
+const landingProps = {
+  title: "Welcome to the Techno Blogs",
+};
 
 function App() {
   return (
     <>
-      {/*TODO: Change this code */}
-      <h1 className="text-4xl bg-blue-600 text-center text-white p-10 font-bold font-mono">
-        Hello World!
-      </h1>
+      <Routes>
+        <Route path="/" element={<Landing {...landingProps} />} />
+        {/* <Route path="/about" element={<About />} /> */}
+        {/* <Route path="/services" element={<Browse />} /> */}
+        {/* <Route path="/contact" element={<ContactUs />} /> */}
+        {/* <Route path="*" element={<NotFound />} /> */}
+      </Routes>
     </>
   );
 }
