@@ -1,1 +1,17 @@
 /* App.css */
+
+/* App.css */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color:   #010713
+}
+
+
+#root {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color:   #010713
+}
