@@ -6,7 +6,7 @@ const AdminLayout = ({ children }) => {
     <div className="admin-layout">
       <AdminHeader />
       {/* Content */}
-      <main className="admin-content p-6 bg-gray-100 min-h-screen">
+      <main className="admin-content bg-gray-100">
         {children}
       </main>
     </div>
