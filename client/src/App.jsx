@@ -1,5 +1,6 @@
 import "./App.css";
 import { Routes, Route } from 'react-router-dom';
+import "@fortawesome/fontawesome-free/css/all.css";
 import Landing from "./pages/Home/Landing";
 import SingleBlog from "./pages/Blog/SingleBlog";
 import BlogCardList from "./components/Admin/BlogCard/BlogCard";
