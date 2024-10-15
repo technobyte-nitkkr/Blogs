@@ -21,5 +21,8 @@
   "homepage": "https://github.com/technobyte-nitkkr/Blogs#readme",
   "devDependencies": {
     "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.6.0"
   }
 }
