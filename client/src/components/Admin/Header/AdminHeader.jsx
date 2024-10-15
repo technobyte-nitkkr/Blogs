@@ -7,7 +7,7 @@ const AdminHeader = () => {
     <header className="admin-header">
       <div className="logo">
         <Link to="/admin">
-          <h1>Blogs</h1> {/* Adjust based on your app's branding */}
+          <h1>Blogs</h1>
         </Link>
       </div>
       <nav className="admin-nav">
@@ -18,7 +18,7 @@ const AdminHeader = () => {
       <div className="admin-actions">
         <input type="text" className="search-input" placeholder="Search" />
         <Link to="/admin/profile">
-          <i className="user-icon"> {/* Use an appropriate icon for user profile */}</i>
+          <i><img src="https://static.vecteezy.com/system/resources/thumbnails/002/387/693/small_2x/user-profile-icon-free-vector.jpg" className="user-icon"></img></i>
         </Link>
       </div>
     </header>

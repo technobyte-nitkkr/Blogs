@@ -1,34 +1,45 @@
+header {
+  width: 1470px;
+  height: 72px;
+  gap: 0px;
+  background-color: #010713;
+  border: 0px 0px 1px 0px;
+  border-bottom: 1px solid #717171;
+}
 
 .admin-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 30px;
-    background-color: #1a1a1a;
-    color: #ffffff;
-    font-family: 'Arial', sans-serif;
-    height: 60px;
-  }
+  width: Fixed (1440px)px;
+  height: Hug (33px)px;
+  gap: 0px;
+  opacity: 0px;
+  font-family: 'JetBrains Mono', monospace;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #010713;
+  position: fixed;
+}
   
-  .logo h1 {
-    font-size: 1.8rem;
-    margin: 0;
-    font-family: 'Cinzel', serif;
-    color: #ffffff;
-  }
+.logo h1 {
+  font-size: 1.8rem;
+  margin: 0;
+  padding-left: 50px;
+  font-family: 'JetBrains Mono', monospace;
+  color: #ffffff;
+}
   
-  .admin-nav {
-    display: flex;
-    gap: 20px;
-  }
+.admin-nav {
+  display: flex;
+  gap: 30px;
+}
   
-  .admin-nav a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 1.1rem;
-    position: relative;
-    transition: color 0.3s ease;
-  }
+.admin-nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  position: relative;
+  transition: color 0.3s ease;
+}
   
   .admin-nav a:hover,
   .admin-nav a:active {
@@ -39,16 +50,16 @@
   .admin-actions {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 30px;
   }
   
   .search-input {
-    background-color: #2a2a2a;
+    background-color: #1f2232;
     border: none;
     border-radius: 25px;
     padding: 5px 15px;
     color: #ffffff;
-    width: 150px;
+    width: 250px;
     outline: none;
     transition: width 0.3s ease;
   }
@@ -63,13 +74,10 @@
   }
   
   .user-icon {
-    background-color: #2a2a2a;
     padding: 10px;
     border-radius: 50%;
-    color: #ffffff;
-    font-size: 1.2rem;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    height: 60px;
   }
   
   .user-icon:hover {
