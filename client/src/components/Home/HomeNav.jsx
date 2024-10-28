@@ -8,7 +8,7 @@ const HomeNav = () => {
   const tabs = ["Top Picks", "Explore", "Trending", "Latest"];
 
   return (
-    <div className="w-screen bg-[#0B0D18]">
+    <div className="w-full bg-[#0B0D18]">
       <div className="flex justify-around gap-16 max-w-[687px] mx-auto py-5 bg-[#0B0D18]">
         {tabs.map((tab) => (
           <div
