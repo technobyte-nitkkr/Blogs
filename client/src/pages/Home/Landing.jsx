@@ -1,6 +1,7 @@
 import HomeNav from "../../components/Home/HomeNav";
 import HomeLayout from "../../layout/HomeLayout";
-
+import PostCard from "./Card";
+import LatestCard from "./LatestCard";
 export default function Landing({ title }) {
     return (
         <HomeLayout>
@@ -23,8 +24,12 @@ export default function Landing({ title }) {
                                 className="h-full " />
                         </div>
                     </div>
-                    <HomeNav />
                 </div>
+                    <HomeNav />
+                    <div>
+                    <PostCard logo={"/Profilelogo.png"} image={"/CardImg.png"} author={"Matthew"} category="Free Factor" title={"How Did a Generation Become So Stupid "} description={"Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum ratione nesciunt sunt quaerat vero. At nihil ad repellendus quidem voluptas."} date={"Jun 8"} likes={"10.5K"} comments={241}/>
+                    <LatestCard logo={"/Profilelogo.png"} image={"/CardImg.png"} author={"Matthew"} category="Free Factor" title={"How Did a Generation Become So Stupid "} description={"Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum ratione nesciunt sunt quaerat vero. At nihil ad repellendus quidem voluptas."} date={"Jun 8"} likes={"10.5K"} comments={241}/>
+                    </div>
                 <div className="w-[92%] h-[70%] bg-grid-pattern bg-[length:139px_152px] bg-[#0B0D18]">
                     <div className="flex max-w-full">
                         <div className=" max-h-full py-32 pl-20">
