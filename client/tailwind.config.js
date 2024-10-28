@@ -2,7 +2,11 @@
 export default {
 	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
 	theme: {
-		extend: {},
+		extend: {
+			screens: {
+				'md-custom': '990px', // Custom breakpoint for 990px
+			},
+		},
 	},
 	plugins: [],
 };
