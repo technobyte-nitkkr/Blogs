@@ -1,10 +1,13 @@
+import Card from "../../components/Card/Card2";
 import HomeNav from "../../components/Home/HomeNav";
+import Navbar from "../../components/Navbar";
 import HomeLayout from "../../layout/HomeLayout";
 
 export default function Landing({ title }) {
     return (
         <HomeLayout>
-            <div className="flex flex-col justify-center items-center h-full w-full overflow-hidden">
+            <div className="flex flex-col justify-center items-center h-full w-full overflow-hidden bg-black">
+            <Card />
                 <div className="w-[92%] h-[70%] bg-grid-pattern bg-[length:139px_152px] bg-[#0B0D18]">
                     <div className="flex max-w-full">
                         <div className=" max-h-full py-32 px-20">
@@ -30,8 +33,8 @@ export default function Landing({ title }) {
                         <div className=" max-h-full py-32 pl-20">
                             <h1 className="text-6xl font-extralight text-white text-wrap m-8">Write for Us</h1>
                             <p className="max-w-full text-xl text-white font-normal text-wrap mx-8">Have a unique tech insight or a breakthrough project you'd like to share? Join our community of writers and make your mark on the tech world. Your expertise and experiences can inspire and educate fellow students and tech enthusiasts. Start writing today and contribute to our growing collection of technical blogs.</p>
-                                <button
-                                    className="bg-blue-500 text-white max-w-full w-28 h-10 rounded-3xl m-8 hover:bg-[#65558F] ease-out">Write</button>
+                            <button
+                                className="bg-blue-500 text-white max-w-full w-28 h-10 rounded-3xl m-8 hover:bg-[#65558F] ease-out">Write</button>
                         </div>
                         <img src="/Saly-38.png"
                             className="mt-28" />
