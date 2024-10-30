@@ -40,7 +40,7 @@ export default function Landing({ title }) {
                         <Card logo={"/Profilelogo.png"} author={"Matthew"} category="Free Factor" title={"How Did a Generation Become So Stupid? "} date={"Jun 8"} likes={"10.5K"} comments={241} />
                         <Card logo={"/Profilelogo.png"} author={"Matthew"} category="Free Factor" title={"How Did a Generation Become So Stupid? "} date={"Jun 8"} likes={"10.5K"} comments={241} />
                         <Card logo={"/Profilelogo.png"} author={"Matthew"} category="Free Factor" title={"How Did a Generation Become So Stupid? "} date={"Jun 8"} likes={"10.5K"} comments={241} />
-                       
+
                     </div>
                     <div className="w-full h-[70%] bg-grid-pattern bg-[length:139px_152px] bg-[#0B0D18]">
                         <div className="flex max-w-full">
