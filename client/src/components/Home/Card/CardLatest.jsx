@@ -2,7 +2,7 @@ import React from "react";
 
 function Card({ logo, title, description, date, likes, comments, author, category}) {
     return (
-        <div className="bg-custom-gradient-card h-[420px] w-[370px] py-6 border-r-[6px] border-b-8 
+        <div className="bg-custom-gradient-card h-[420px] md:w-[370px] w-[340px] py-6 border-r-[6px] border-b-8 
     hover:border-r-[9px] hover:border-b-[19px] transition-all duration-300 ease-in rounded-3xl"
     style={{
         borderImageSource: 'linear-gradient(141.07deg, #D51B10 3.32%, #00336C 95.71%)',
