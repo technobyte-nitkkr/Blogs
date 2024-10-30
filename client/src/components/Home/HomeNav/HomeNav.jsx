@@ -6,7 +6,7 @@ const HomeNav = () => {
 
   return (
     <div className="w-full  ">
-        <div className=" md:flex md:justify-around grid grid-cols-2 gap-4 px-4"  style={{ justifyContent: "space-between", justifyItems: "center" }}>
+        <div className=" md:flex md:justify-around grid grid-cols-2 gap-4 px-4"  style={{ justifyContent: "space-evenly", justifyItems: "center" }}>
 
          {tabs.map((tab) => (
           <div
