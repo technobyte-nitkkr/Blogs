@@ -8,7 +8,7 @@ import WriteForUs from "../../components/Home/WriteForUs/WriteForUs";
 import Navbar from "../../components/Navbar";
 export default function Landing({ title }) {
     return (
-        <HomeLayout>
+       <>
             <Navbar />
             <div className="flex flex-col justify-center items-center h-full w-full overflow-hidden bg-black">
                 <div className="w-[95%]">
@@ -43,6 +43,6 @@ export default function Landing({ title }) {
 
                 </div>
             </div>
-        </HomeLayout>
+            </>
     );
 }

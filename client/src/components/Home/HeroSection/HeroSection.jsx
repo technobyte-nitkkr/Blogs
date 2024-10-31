@@ -2,10 +2,11 @@ import React from 'react';
 
 const HeroSection = () => {
   return (
-    <div className="w-full h-[70%] bg-grid-pattern bg-[length:139px_152px] bg-[#0B0D18]">
+    <div className="w-full h-[70%] bg-grid-pattern bg-[length:139px_152px] bg-[#0B0D18] relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-l from-[#D51B10] to-transparent opacity-15"></div>
       <div className="flex ">
         <div className="md:max-h-full md:py-32 md:px-20 ">
-          <h1 className="md:text-6xl  text-xl font-extralight text-white text-wrap m-8">
+          <h1 className="md:text-6xl text-xl font-extralight text-white text-wrap m-8">
             Innovate, Learn, Connect
           </h1>
           <p className="max-w-full md:text-xl text-[#A79E9E] font-normal text-wrap mx-8">
@@ -22,8 +23,16 @@ const HeroSection = () => {
           </div>
         </div>
         <div className="flex items-center md:w-[900px] max-h-full mt-28 ">
-          <img src="/Saly-11.png" alt="Hero Section Image" className="h-[497px] w-[477px] max-w-none hidden md:block " />
-          <img src="/Saly-mobile.png" alt="Hero Section Image" className="max-w-none block md:hidden  w-[200px]" />
+          <img
+            src="/Saly-11.png"
+            alt="Hero Section Image"
+            className="h-[497px] w-[477px] max-w-none hidden md:block "
+          />
+          <img
+            src="/Saly-mobile.png"
+            alt="Hero Section Image"
+            className="max-w-none block md:hidden w-[200px]"
+          />
         </div>
       </div>
     </div>
