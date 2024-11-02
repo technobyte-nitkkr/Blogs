@@ -23,7 +23,7 @@ function Navbar({ onSearch }) {
             <div className="self-stretch my-auto">Blogs</div>
           </div>
           <div className="flex gap-10 items-center self-stretch my-auto text-base font-light leading-8 text-center min-w-[240px]">
-            <a href="#top-pics" className="self-stretch my-auto">Top Pics</a>
+            <a href="#topPics" className="self-stretch my-auto">Top Pics</a>
             <a href="#about-us" className="self-stretch my-auto">About Us</a>
             <a href="#write" className="self-stretch my-auto">Write</a>
           </div>

@@ -2,8 +2,9 @@ import React from 'react';
 
 const WriteForUs = () => {
     return (
-        <div className="w-full h-[70%] bg-grid-pattern bg-[length:139px_152px] bg-[#0B0D18]">
-            <div className="flex md:max-w-full items-center ">
+<>
+        <div className="w-full mt-[30px] h-[100vh] absolute z-0  bg-gradient-to-r from-blue-500 to-black bg-opacity-100"> </div>
+            <div className="flex md:max-w-full relative z-10 h-[110vh]  mb-10 bg-top-4  bg-hero-pattern bg-no-repeat bg-cover items-center ">
                 <div className="md:max-h-full md:py-32 md:pl-20 pl-10">
                     <h1 className="md:text-6xl text-2xl font-extralight text-white text-wrap md:m-8 m-2">Write for Us</h1>
                     <p className="max-w-full md:text-xl text-sm text-white font-normal text-wrap md:mx-8 m-2">
@@ -16,7 +17,7 @@ const WriteForUs = () => {
                 <img src="/Saly-38.png" alt="Write for Us" className="hidden md:block" />
                 <img src="/Saly-38.png" alt="Write for Us" className=" block h-[250px] w-[200px]  md:hidden" />
             </div>
-        </div>
+            </>
     );
 };
 

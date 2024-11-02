@@ -2,9 +2,14 @@ import React from "react";
 
 function Card({ logo, title, description, date, likes, comments, author, category}) {
     return (
-        <div className="bg-custom-gradient-card h-[420px] md:w-[370px] w-[340px] py-6 border-r-[6px] border-b-8 
-    hover:border-r-[9px] hover:border-b-[19px] transition-all duration-300 ease-in rounded-3xl"
+        <div className="md:w-[370px] w-[340px]  h-[420px] overflow-hidden border-2 border-solid border-black border-opacity-0 rounded-xl "
+        style={{
+             background: 'radial-gradient(circle at top left, rgba(0, 51, 108, 1), rgba(0, 51, 108, 0) 15%)'
+        }}>
+        <div className="bg-custom-gradient-card w-full rounded-lg h-full py-6 border-r-[6px] border-b-[6px]
+    hover:border-r-[9px] hover:border-b-[9px] transition-all duration-300 ease-in  "
     style={{
+       
         borderImageSource: 'linear-gradient(141.07deg, #D51B10 3.32%, #00336C 95.71%)',
         borderImageSlice: 1,
 
@@ -40,6 +45,7 @@ function Card({ logo, title, description, date, likes, comments, author, categor
                     </div>
 
                 </div>
+            </div>
             </div>
         </div>
     )

@@ -2,13 +2,22 @@ import React from "react";
 
 const PostCard = ({ logo, image, title, description, date, likes, comments, author, category }) => {
   return (
-    <div className="bg-custom-gradient-card h-full p-4 w-full max-w-[850px] rounded-2xl shadow-lg overflow-hidden mb-6 transition-transform duration-300 hover:scale-105 border-4 mx-auto " 
-    style={{
-      borderImageSource: 'linear-gradient(141.07deg, #D51B10 3.32%, #00336C 95.71%)',
-      borderImageSlice: 1,
+   <div className="w-[850px] h-full mx-auto mb-6 outline-transparent overflow-hidden rounded-xl outline outline-offset-[-4px]"
+   style={{
+    background: 'radial-gradient(circle at top left, rgba(0, 51, 108, 1), rgba(0, 51, 108, 0) 20%)'
 
-    }}>
-      <div className="flex flex-col md:flex-row">
+   }}
+  >
+  <div 
+  className="bg-custom-gradient-card border-b-2 border-r-2 w-full outline  rounded-lg transition-all duration-300 ease-in mx-auto" 
+  style={{
+    borderImageSource: 'linear-gradient(141.07deg, #D51B10 3.32%, #00336C 95.71%)',
+    borderImageSlice: 1,
+  }}
+>
+
+
+      <div className="flex flex-col md:flex-row  p-4 border-[#010713] border-b-2 rounded-xl">
         {/* Image Section */}
         <img
           src={image}
@@ -48,6 +57,7 @@ const PostCard = ({ logo, image, title, description, date, likes, comments, auth
             </div>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );

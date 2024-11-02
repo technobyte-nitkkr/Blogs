@@ -2,7 +2,6 @@ import "./App.css";
 import { Routes, Route } from 'react-router-dom';
 import "@fortawesome/fontawesome-free/css/all.css";
 import Landing from "./pages/Home/Landing";
-import DraftAndPublished from './components/dashboard/DraftAndPublished'
 import SingleBlog from "./pages/Blog/SingleBlog";
 import BlogCardList from "./components/Admin/BlogCard/BlogCard";
 import AdminLayout from "./layout/AdminLayout";
@@ -24,7 +23,6 @@ function App() {
         {/* <Route path="/services" element={<Browse />} /> */}
         {/* <Route path="/contact" element={<ContactUs />} /> */}
         {/* <Route path="*" element={<NotFound />} /> */}
-        <Route path="/dashboard" element={<DraftAndPublished/>}></Route>
         <Route path="/blog/:id" element={<SingleBlog />} />
         <Route path="/admin" element={<AdminLayout><AdminDashboard /></AdminLayout>} />
         <Route path="/blogs" element={<BlogCardList />} />

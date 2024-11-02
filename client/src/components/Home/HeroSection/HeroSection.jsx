@@ -1,10 +1,11 @@
 import React from 'react';
-
 const HeroSection = () => {
   return (
-    <div className="w-full h-[70%] bg-grid-pattern bg-[length:139px_152px] bg-[#0B0D18] relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-l from-[#D51B10] to-transparent opacity-15"></div>
-      <div className="flex ">
+    <>
+    <div className='bg-hero-pattern bg-top-4 bg-no-repeat bg-cover	 z-10'>
+    <div className={`w-full h-[70%] bg-[length:139px_152px] relative overflow-hidden `}>
+      <div className={`absolute inset-0 opacity-15 `}></div>
+      <div className="flex  ">
         <div className="md:max-h-full md:py-32 md:px-20 ">
           <h1 className="md:text-6xl text-xl font-extralight text-white text-wrap m-8">
             Innovate, Learn, Connect
@@ -36,6 +37,8 @@ const HeroSection = () => {
         </div>
       </div>
     </div>
+    </div>
+    </>
   );
 };
 

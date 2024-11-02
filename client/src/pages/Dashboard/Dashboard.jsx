@@ -43,11 +43,11 @@ function Dashboard(props) {
     <div className="min-h-screen  bg-custom-black flex flex-col">
       <Navbar onSearch={handleSearch} /> 
       <div className="flex flex-1 flex-col sm:flex-row overflow-hidden sm:ml-12 mt-8">
-        <div className="hidden sm:block left-[10vw] mr-[2vw] items-center sm:ml-0 sm:fixed w-[296px] sm:h-[900px] sm:w-[296px] flex-col z-10 mb-4 sm:mb-0">
+        <div className="hidden lg:block  mr-[2vw] items-center sm:ml-0 sm:fixed w-[296px] sm:h-[900px] sm:w-[296px] flex-col z-10 mb-4 sm:mb-0">
           <Sidebar />
         </div>
 
-        <main className="flex-1 overflow-y-auto ml-[3%] sm:ml-[10vw] absolute items-center sm:left-[25vw] p-4 sm:p-8">
+        <main className="flex-1 overflow-y-auto  ml-[3%] lg:ml-[8%] md:ml-[-10vw] sm:ml-[10vw] absolute items-center sm:left-[25vw] p-4 sm:p-8">
           <div className="max-w-4xl mx-auto ">
             <div className="mb-4 sm:mb-8 ">
               <div className="flex justify-between items-center ">

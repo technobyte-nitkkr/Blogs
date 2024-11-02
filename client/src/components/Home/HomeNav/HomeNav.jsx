@@ -5,7 +5,12 @@ const HomeNav = () => {
   const tabs = ["Top Picks", "Explore", "Trending", "Latest"];
 
   return (
-    <div className="w-full  ">
+    <div className=" mx-auto w-[95%] border-b-2 mb-4"
+    style={{
+      borderImageSource: 'linear-gradient(141.07deg, #00336C 3.32%, #D51B10 95.71%)',
+      borderImageSlice: 1,
+
+  }}>
         <div className=" md:flex md:justify-around grid grid-cols-2 gap-4 px-4"  style={{ justifyContent: "space-evenly", justifyItems: "center" }}>
 
          {tabs.map((tab) => (
