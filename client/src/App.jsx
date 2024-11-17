@@ -6,8 +6,8 @@ import SingleBlog from "./pages/Blog/SingleBlog";
 import BlogCardList from "./components/Admin/BlogCard/BlogCard";
 import AdminLayout from "./layout/AdminLayout";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
-import AdminHeader from "./components/Admin/Header/AdminHeader";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import NotFound from "./pages/NotFound/NotFound";
 
 // Pages
 const landingProps = {
@@ -22,7 +22,7 @@ function App() {
         {/* <Route path="/about" element={<About />} /> */}
         {/* <Route path="/services" element={<Browse />} /> */}
         {/* <Route path="/contact" element={<ContactUs />} /> */}
-        {/* <Route path="*" element={<NotFound />} /> */}
+        <Route path="*" element={<NotFound />} />
         <Route path="/blog/:id" element={<SingleBlog />} />
         <Route path="/admin" element={<AdminLayout><AdminDashboard /></AdminLayout>} />
         <Route path="/blogs" element={<BlogCardList />} />
