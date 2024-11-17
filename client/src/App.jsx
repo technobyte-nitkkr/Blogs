@@ -8,6 +8,7 @@ import AdminLayout from "./layout/AdminLayout";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import NotFound from "./pages/NotFound/NotFound";
+import WriteBlog from "./pages/Write/WriteBlog";
 
 // Pages
 const landingProps = {
@@ -19,7 +20,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Landing {...landingProps} />} />
-        {/* <Route path="/about" element={<About />} /> */}
+        <Route path="/write" element={<WriteBlog />} />
         {/* <Route path="/services" element={<Browse />} /> */}
         {/* <Route path="/contact" element={<ContactUs />} /> */}
         <Route path="*" element={<NotFound />} />
