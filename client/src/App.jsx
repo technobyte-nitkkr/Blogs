@@ -6,6 +6,8 @@ import SingleBlog from "./pages/Blog/SingleBlog";
 import AdminLayout from "./layout/AdminLayout";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import NotFound from "./pages/NotFound/NotFound";
+import WriteBlog from "./pages/Write/WriteBlog";
 
 // Pages
 const landingProps = {
@@ -17,8 +19,8 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Landing {...landingProps} />} />
-        {/* <Route path="/about" element={<About />} /> */}
-        {/* <Route path="*" element={<NotFound />} /> */}
+        <Route path="/write" element={<WriteBlog />} />
+        <Route path="*" element={<NotFound />} />
         <Route path="/blog/:id" element={<SingleBlog />} />
         <Route
           path="/admin"
