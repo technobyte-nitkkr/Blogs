@@ -1,6 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './AdminHeader.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import "./AdminHeader.css";
 
 const AdminHeader = () => {
   return (
@@ -18,7 +18,12 @@ const AdminHeader = () => {
       <div className="admin-actions">
         <input type="text" className="search-input" placeholder="Search" />
         <Link to="/admin/profile">
-          <i><img src="https://static.vecteezy.com/system/resources/thumbnails/002/387/693/small_2x/user-profile-icon-free-vector.jpg" className="user-icon"></img></i>
+          <i>
+            <img
+              src="https://static.vecteezy.com/system/resources/thumbnails/002/387/693/small_2x/user-profile-icon-free-vector.jpg"
+              className="user-icon"
+            ></img>
+          </i>
         </Link>
       </div>
     </header>

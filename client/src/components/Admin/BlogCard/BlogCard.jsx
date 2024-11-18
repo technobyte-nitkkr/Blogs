@@ -1,35 +1,38 @@
 // BlogCard.jsx
-import React from 'react';
-import './BlogCard.css';
+import React from "react";
+import "./BlogCard.css";
 
 const BlogCard = () => {
   const blogs = [
     {
       id: 1,
-      title: 'Title',
-      content: 'Content content Content content Content content content...',
-      lastEdited: 'last edited 10 days ago',
-      imageSrc: 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSfeJXWuc3Qla7qsjLMi-NCkYyGjqX7goJNIHdUd4UekEjFWCP3',
+      title: "Title",
+      content: "Content content Content content Content content content...",
+      lastEdited: "last edited 10 days ago",
+      imageSrc:
+        "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSfeJXWuc3Qla7qsjLMi-NCkYyGjqX7goJNIHdUd4UekEjFWCP3",
     },
     {
       id: 2,
-      title: 'Title',
-      content: 'Content content Content content Content content content...',
-      lastEdited: 'last edited 5 days ago',
-      imageSrc: 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSfeJXWuc3Qla7qsjLMi-NCkYyGjqX7goJNIHdUd4UekEjFWCP3',
+      title: "Title",
+      content: "Content content Content content Content content content...",
+      lastEdited: "last edited 5 days ago",
+      imageSrc:
+        "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSfeJXWuc3Qla7qsjLMi-NCkYyGjqX7goJNIHdUd4UekEjFWCP3",
     },
     {
       id: 3,
-      title: 'Title',
-      content: 'Content content Content content Content content content...',
-      lastEdited: 'last edited 1 day ago',
-      imageSrc: 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSfeJXWuc3Qla7qsjLMi-NCkYyGjqX7goJNIHdUd4UekEjFWCP3',
+      title: "Title",
+      content: "Content content Content content Content content content...",
+      lastEdited: "last edited 1 day ago",
+      imageSrc:
+        "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSfeJXWuc3Qla7qsjLMi-NCkYyGjqX7goJNIHdUd4UekEjFWCP3",
     },
   ];
 
   const blogCards = [];
 
-  blogs.forEach(blog => {
+  blogs.forEach((blog) => {
     blogCards.push(
       <div key={blog.id} className="blog-card">
         <div className="blog-content">
@@ -47,11 +50,7 @@ const BlogCard = () => {
     );
   });
 
-  return (
-    <div className="blog-list">
-      {blogCards}
-    </div>
-  );
+  return <div className="blog-list">{blogCards}</div>;
 };
 
 export default BlogCard;

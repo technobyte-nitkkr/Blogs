@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
-import Sidebar from "../../components/Dashboard/index";
 import Navbar from "../../components/Navbar";
+import Sidebar from "../../components/SideProfile/SideProfile";
 
 function Dashboard(props) {
   const [activeTab, setActiveTab] = useState("Draft");
   const [blogs, setBlogs] = useState([]);
-  const [searchTerm, setSearchTerm] = useState(""); 
+  const [searchTerm, setSearchTerm] = useState("");
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
@@ -19,7 +20,7 @@ function Dashboard(props) {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/blog/search");
+        const res = await axios.get("http://localhost:3000/blog/search"); // TODO: change this
         setBlogs(res.data);
       } catch (error) {
         console.error(error);
@@ -29,19 +30,21 @@ function Dashboard(props) {
     fetchBlogs();
   }, []);
 
- 
   const filteredBlogs = blogs
     .filter((blog) =>
-      activeTab === "Draft" ? blog.review !== "approved" : blog.review === "approved"
+      activeTab === "Draft"
+        ? blog.review !== "approved"
+        : blog.review === "approved"
     )
-    .filter((blog) => 
-      blog.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
-      blog.content.toLowerCase().includes(searchTerm.toLowerCase())
+    .filter(
+      (blog) =>
+        blog.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        blog.content.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
   return (
     <div className="min-h-screen  bg-custom-black flex flex-col">
-      <Navbar onSearch={handleSearch} /> 
+      <Navbar onSearch={handleSearch} />
       <div className="flex flex-1 flex-col sm:flex-row overflow-hidden sm:ml-12 mt-8">
         <div className="hidden lg:block  mr-[2vw] items-center sm:ml-0 sm:fixed w-[296px] sm:h-[900px] sm:w-[296px] flex-col z-10 mb-4 sm:mb-0">
           <Sidebar />
@@ -73,11 +76,11 @@ function Dashboard(props) {
                     Published
                   </span>
                 </div>
-                <a href="/createPost" className="ml-[28.2vw]">
+                <Link to="/write" className="ml-[28.2vw]">
                   <button className="text-center bg-blue-500 cursor-pointer px-4 py-2 sm:text-lg hover:bg-blue-600 text-white rounded-full font-mono">
                     Post
                   </button>
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -100,11 +103,11 @@ function Dashboard(props) {
                           {activeTab === "Draft" ? "last edited" : "published"}{" "}
                           {new Date(blog.date).toLocaleDateString()}
                         </span>
-                        <a href="/UpdatePost">
+                        <Link to="/UpdatePost">
                           <button className="bg-blue-500 cursor-pointer hover:bg-blue-600 w-[70px] sm:w-[87px] h-[27px] text-white ml-4 sm:ml-[80px] rounded-full font-mono">
                             View
                           </button>
-                        </a>
+                        </Link>
                       </div>
                     </div>
                     <div className="w-full p-3 sm:p-0 sm:w-[270px] h-[160px] sm:h-[180px] mt-4 sm:mt-0 flex-shrink-0 relative">
