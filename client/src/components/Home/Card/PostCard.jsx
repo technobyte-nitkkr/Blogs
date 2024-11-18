@@ -13,7 +13,7 @@ const PostCard = ({
 }) => {
   return (
     <div
-      className="w-[850px] h-full mx-auto mb-6 outline-transparent overflow-hidden rounded-xl outline outline-offset-[-4px]"
+      className="w-[340px] md:w-[850px] h-full mx-auto mb-6 outline-transparent overflow-hidden rounded-xl outline outline-offset-[-4px]"
       style={{
         background:
           "radial-gradient(circle at top left, rgba(0, 51, 108, 1), rgba(0, 51, 108, 0) 20%)",
