@@ -29,7 +29,7 @@ function Navbar({ onSearch }) {
             <a href="/#topPics" className="self-stretch my-auto">
               Top Pics
             </a>
-            <Link to="/about-us" className="self-stretch my-auto">
+            <Link to="/about" className="self-stretch my-auto">
               About Us
             </Link>
             <Link to="/write" className="self-stretch my-auto">
@@ -62,12 +62,14 @@ function Navbar({ onSearch }) {
             aria-label="Notifications"
             className="bg-transparent border-none p-0"
           >
-            <img
-              loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/81014a5be615d9cf0f59dd6ceb10aa64ca1b93b4ad87b38514daba0dc57ae184?apiKey=cb0dbcd120c84cf4a6cf9d039ebac0a2&"
-              alt=""
-              className="object-contain shrink-0 self-stretch my-auto w-[24px] aspect-square"
-            />
+            <Link to={`/dashboard`}>
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/81014a5be615d9cf0f59dd6ceb10aa64ca1b93b4ad87b38514daba0dc57ae184?apiKey=cb0dbcd120c84cf4a6cf9d039ebac0a2&"
+                alt=""
+                className="object-contain shrink-0 self-stretch my-auto w-[24px] aspect-square"
+              />
+            </Link>
           </button>
         </div>
       </div>

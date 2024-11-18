@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+// This page might be deleted
 function Navbar({ onSearch }) {
   const [searchTerm, setSearchTerm] = useState("");
 

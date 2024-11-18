@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Sidebar = () => {
+const Sidebar = ({user}) => {
   return (
     <aside className="flex flex-col sm:h-[700px] w-[296px] max-md:ml-0 max-md:w-full overflow-y-auto">
       <div className="flex overflow-hidden flex-col grow pb-7 w-full text-lg bg-gray-900 rounded-xl border-2 border-solid border-black border-opacity-20 text-zinc-50 max-md:mt-10">
@@ -14,7 +14,7 @@ const Sidebar = () => {
             className="object-contain bg-blend-normal aspect-[0.98] rounded-[50px] w-[90px] max-md:w-[70px]"
           />
           <div className="mt-4 text-xl font-medium tracking-normal leading-tight text-center text-white max-md:text-lg">
-            Username
+            {user.name}
           </div>
           <button className="flex flex-col items-center justify-center mt-5 text-sm leading-7  bg-zinc-50 rounded-[32px] text-zinc-800 w-[120px] max-md:w-[100px] max-md:text-xs">
             <div className="flex z-10 justify-center py-2">
@@ -50,7 +50,7 @@ const Sidebar = () => {
                   className="object-contain shrink-0 w-5 aspect-[0.91] max-md:w-4"
                 />
                 <Link to="/help" className="text-sm max-md:text-xs">
-                  Helpod
+                  Help
                 </Link>
               </li>
             </ul>
@@ -59,6 +59,6 @@ const Sidebar = () => {
       </div>
     </aside>
   );
-}
+};
 
 export default Sidebar;

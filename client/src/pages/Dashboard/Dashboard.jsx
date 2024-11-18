@@ -9,6 +9,16 @@ function Dashboard(props) {
   const [blogs, setBlogs] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
+  const user = {
+    // TODO: fetch cookies and get the data from it
+    email: "example@dev.com",
+    name: "usernamed",
+    role: "user",
+    newsletterIsSubscribed: false,
+    gAuth: {},
+  };
+  // TODO: fetch all the blogs by this user. sort on the basis of draft and published
+
   const handleTabClick = (tab) => {
     setActiveTab(tab);
   };
@@ -47,7 +57,7 @@ function Dashboard(props) {
       <Navbar onSearch={handleSearch} />
       <div className="flex flex-1 flex-col sm:flex-row overflow-hidden sm:ml-12 mt-8">
         <div className="hidden lg:block  mr-[2vw] items-center sm:ml-0 sm:fixed w-[296px] sm:h-[900px] sm:w-[296px] flex-col z-10 mb-4 sm:mb-0">
-          <Sidebar />
+          <Sidebar user={user} />
         </div>
 
         <main className="flex-1 overflow-y-auto  ml-[3%] lg:ml-[8%] md:ml-[-10vw] sm:ml-[10vw] absolute items-center sm:left-[25vw] p-4 sm:p-8">

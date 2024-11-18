@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 const HeroSection = () => {
   return (
     <>
@@ -19,12 +20,16 @@ const HeroSection = () => {
                 for all things.
               </p>
               <div className="flex justify-start items-center md:w-full">
-                <button className="bg-blue-500 text-white max-w-full md:w-28 w-16 p-0.5 h-10 rounded-3xl m-8 hover:bg-[#65558F] ease-out">
-                  Sign Up
-                </button>
-                <button className="bg-[#A3C8F0] text-black max-w-full md:w-28 w-16 h-10 rounded-3xl">
-                  Write
-                </button>
+                <Link to={"/signup"}>
+                  <button className="bg-blue-500 text-white max-w-full md:w-28 w-16 p-0.5 h-10 rounded-3xl m-8 hover:bg-[#65558F] ease-out">
+                    Sign Up
+                  </button>
+                </Link>
+                <Link to={"/write"}>
+                  <button className="bg-[#A3C8F0] text-black max-w-full md:w-28 w-16 h-10 rounded-3xl">
+                    Write
+                  </button>
+                </Link>
               </div>
             </div>
             <div className="flex items-center md:w-[900px] max-h-full mt-28 ">

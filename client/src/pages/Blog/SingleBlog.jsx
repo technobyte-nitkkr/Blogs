@@ -1,12 +1,30 @@
+import React from "react";
+import { useParams } from "react-router-dom";
 import HomeLayout from "../../layout/HomeLayout";
 import "./SingleBlog.css";
-import glitchImage from "./image 31.png";
-import codeImage from "./image 38.png";
 import profileImage from "./profile.png";
-import likeIcon from "./like-icon.png";
-import commentIcon from "./comment-icon.png";
+import likeIcon from "../../assets/like-icon.png";
+import commentIcon from "../../assets/comment-icon.png";
+import blogs from "../../../data/blogs";
+import { Link } from "react-router-dom";
 
 export default function SingleBlog({ title }) {
+  const { id } = useParams();
+  const blogId = parseInt(id, 10); // for now. later use useEffect
+  const blog = blogs[blogId];
+  console.log(blog);
+
+  if (!blog) {
+    return (
+      <HomeLayout>
+        <div className="main-background"></div>
+        <div className="blog-content-wrapper">
+          <h1 className="blog-title">Blog not found!</h1>
+        </div>
+      </HomeLayout>
+    );
+  }
+
   return (
     <HomeLayout>
       {/* Main Background */}
@@ -15,22 +33,27 @@ export default function SingleBlog({ title }) {
       <div className="blog-content-wrapper">
         {/* Blog Title and Author Details */}
         <div className="blog-header">
-          <h1 className="blog-title">
-            Lorem ipsum dolor sit amet, consectetur
-          </h1>
+          <h1 className="blog-title">{blog.title}</h1>
           <div className="blog-author-info">
             {/* Profile Image and Name */}
             <div className="author-profile">
               <img className="profile-image" src={profileImage} alt="Author" />
 
               <div className="author-details">
-                <p className="author-name">Username</p>
-                <p className="author-date">Jan 21, 2024</p>
+                <p className="author-name">{blog.author}</p>
+                <p className="author-date">
+                  {blog.date.toLocaleDateString("en-US", {
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </p>
               </div>
             </div>
 
             {/* Edit Button */}
-            <button className="edit-button">Edit</button>
+            <Link to={`/write/${blog.id}`}>
+              <button className="edit-button">Edit</button>
+            </Link>
           </div>
           {/* Interaction Section */}
           <div className="interaction-info">
@@ -41,7 +64,7 @@ export default function SingleBlog({ title }) {
             <div className="likes-comments">
               <div className="icon-container">
                 <img src={likeIcon} alt="Like" className="interaction-icon" />
-                <span>38K</span>
+                <span>{blog.likes}</span>
               </div>
               <div className="icon-container">
                 <img
@@ -49,7 +72,7 @@ export default function SingleBlog({ title }) {
                   alt="Comments"
                   className="interaction-icon"
                 />
-                <span>1026</span>
+                <span>{blog.comments.length}</span>
               </div>
             </div>
 
@@ -58,49 +81,13 @@ export default function SingleBlog({ title }) {
           </div>
         </div>
 
-        {/* Blog Image Section */}
         <div className="blog-image-section">
           <p className="blog-paragraph">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-          <div className="blog-image">
-            <img src={glitchImage} alt="Glitch effect" />
-          </div>
-          <p className="blog-paragraph">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-          <br />
-          <p className="blog-paragraph">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
+            {blog.description}
           </p>
         </div>
 
-        {/* Code Snippet Section */}
-        <div className="code-block">
-          <div className="code-background">
-            <img src={codeImage} alt="Code snippet" />
-          </div>
-        </div>
-
-        {/* Interaction Section */}
+        {/* TODO: Interaction Section is incomplete, add option to add comments and view comments*/}
         <div className="interaction-info">
           <div className="horizontal-line"></div>
 
@@ -108,7 +95,7 @@ export default function SingleBlog({ title }) {
           <div className="likes-comments">
             <div className="icon-container">
               <img src={likeIcon} alt="Like" className="interaction-icon" />
-              <span>38K</span>
+              <span>{blog.likes}</span>
             </div>
             <div className="icon-container">
               <img
@@ -116,7 +103,7 @@ export default function SingleBlog({ title }) {
                 alt="Comments"
                 className="interaction-icon"
               />
-              <span>1026</span>
+              <span>{blog.comments.length}</span>
             </div>
           </div>
 
