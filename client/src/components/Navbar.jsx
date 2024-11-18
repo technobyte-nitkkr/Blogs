@@ -16,7 +16,7 @@ function Navbar({ onSearch }) {
 
   return (
     <header className="flex items-center px-5 py-4 w-full border-b border-neutral-500">
-      <div className="flex items-center md:w-[10vw] w-full ml-10">
+      <div className="flex items-center md:w-[10vw] w-[30vw] md:ml-10">
         <div className="flex items-center gap-5 text-xl font-bold">
           <img
             loading="lazy"
