@@ -13,10 +13,9 @@ const app = express();
 const blog = new Blog();
 
 // Load environment variables from .env file
+dotenv.config();
 const PORT = process.env.PORT || 3000;
 const DB = process.env.MONGODB_HOST;
-
-dotenv.config();
 
 // CORS Config
 const corsOptions = {
@@ -25,23 +24,23 @@ const corsOptions = {
     optionsSuccessStatus: 204 // Some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 
-
-
 app.use(session({ secret: 'YOUR_SESSION_SECRET', resave: false, saveUninitialized: false }));
-
 app.use(passport.initialize());
 app.use(passport.session());
-
 
 app.use(cors(corsOptions));
 app.use(express.json()); // Parse JSON bodies for this app
 
 // Basic route
-
+app.get('/', (req, res) => {
+    console.log('Received request on /');
+    res.send('Hello World!');
+});
 
 // Connect to MongoDB
 const connectDB = async () => {
     try {
+        console.log('Attempting to connect to MongoDB...');
         await mongoose.connect(DB, {
             useNewUrlParser: true,
             useUnifiedTopology: true
@@ -55,12 +54,14 @@ const connectDB = async () => {
 
 // Start server and connect to database
 const startServer = async () => {
+    console.log('Starting server...');
     await connectDB();
 
     app.listen(PORT, "0.0.0.0", () => {
         console.log(`Server running on port ${PORT}`);
     });
 
+    console.log('Initializing routes...');
     routes(app);
 };
 

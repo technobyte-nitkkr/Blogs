@@ -1,27 +1,31 @@
 import Blog from "../model/blog.js";
 
 export default async function postAdmin(req, res) {
-    // const body = req.body; --> { email, password } ??? 
+  try {
+    console.log("Fetching published blogs...");
+    const published_blogs = await Blog.find({ review: "approved" });
+    console.log("Published blogs fetched:", published_blogs);
 
-    try {
-        // Published Blogs (where review: approved)
-        const published_blogs = await Blog.find({ review: "approved" });
-        // Updated Reviews (where review: update)
-        const updated_review = await Blog.find({ review: "update" });
-        // Pending Reviews (where review: pending)
-        const review = await Blog.find({ review: "pending" });
+    console.log("Fetching blogs with review update...");
+    const updated_review = await Blog.find({ review: "update" });
+    console.log("Blogs with review update fetched:", updated_review);
 
-        return res.status(200).json({
-            success: true,
-            message: "Admin data fetched successfully",
-            published_blogs,
-            updated_review,
-            review,
-        });
-    } catch (err) {
-        return res.status(500).json({
-            success: false,
-            message: err.message,
-        });
-    }
+    console.log("Fetching blogs with pending review...");
+    const review = await Blog.find({ review: "pending" });
+    console.log("Blogs with pending review fetched:", review);
+
+    return res.status(200).json({
+      success: true,
+      message: "Admin data fetched successfully",
+      published_blogs,
+      updated_review,
+      review,
+    });
+  } catch (err) {
+    console.error("Error fetching admin data:", err.message);
+    return res.status(500).json({
+      success: false,
+      message: err.message,
+    });
+  }
 }
