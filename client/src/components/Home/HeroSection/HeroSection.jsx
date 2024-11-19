@@ -7,7 +7,7 @@ const HeroSection = () => {
         <div
           className={`w-full h-[70%] bg-[length:139px_152px] relative overflow-hidden `}
         >
-          <div className={`absolute inset-0 opacity-15 `}></div>
+          
           <div className="flex  ">
             <div className="md:max-h-full md:py-32 md:px-20 ">
               <h1 className="md:text-6xl text-xl font-extralight text-white text-wrap m-8">

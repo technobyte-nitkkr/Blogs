@@ -16,17 +16,19 @@ const Sidebar = ({user}) => {
           <div className="mt-4 text-xl font-medium tracking-normal leading-tight text-center text-white max-md:text-lg">
             {user.name}
           </div>
-          <button className="flex flex-col items-center justify-center mt-5 text-sm leading-7  bg-zinc-50 rounded-[32px] text-zinc-800 w-[120px] max-md:w-[100px] max-md:text-xs">
-            <div className="flex z-10 justify-center py-2">
+          <button className="flex flex-col items-center justify-center mt-5 text-sm leading-7  bg-zinc-50 rounded-[32px] text-zinc-800 w-[120px] max-md:w-[100px] max-md:text-xs pr-2">
+            <div className="flex z-10 gap-5 justify-center py-2">
               <img
                 loading="lazy"
                 src="https://cdn.builder.io/api/v1/image/assets/TEMP/2e8248a257f5ca0525a82336a55892a009493ec80b1620965d2db1a901fe65be?apiKey=cb0dbcd120c84cf4a6cf9d039ebac0a2&"
                 alt=""
-                className="object-contain relative left-1 sm:left-4 "
+                className="object-contain relative left-0 sm:left-4 "
               />
+              <Link to={'/profile'}>
               <span className="w-[100px] sm:w-[140px] text-center">
                 Edit Profile
               </span>
+              </Link>
             </div>
           </button>
           <nav className="mt-[20px] max-md:mt-10">
