@@ -19,6 +19,7 @@ export async function userMiddleware(req, res, next) {
       return res.json({ message: "User not Found" });
     }
     console.log("User found:", user);
+    req.user = user;
     next();
   } catch (err) {
     console.log("Error verifying token:", err);

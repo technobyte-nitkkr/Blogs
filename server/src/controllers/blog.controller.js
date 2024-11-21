@@ -1,6 +1,6 @@
 import express from "express";
-import CreateComment from "../services/comment.service.js";
-import { handleBlogSearch } from "../services/blog.service.js";
+import createComment from "../services/comment.service.js";
+import { handleBlogSearch, returnBlogById } from "../services/blog.service.js";
 const router = express.Router();
 
 router.post(
@@ -9,8 +9,13 @@ router.post(
     console.log(`Creating comment for blog with ID: ${req.params.id}`);
     next();
   },
-  CreateComment
+  createComment
 );
+
+router.get("/:id",(req,res,next) => {
+  console.log(`GET /blog/${id}`);
+  next();
+}, returnBlogById)
 
 router.get(
   "/search",

@@ -26,6 +26,6 @@ export function adminMiddleware(req, res, next) {
       message: "User is not admin",
     });
   }
-
+  req.user = user;
   next();
 }

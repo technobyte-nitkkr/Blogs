@@ -1,6 +1,10 @@
 import express from "express";
-import { createBlog, getAllDataForAdmin } from "../services/admin.service.js";
-import { deleteBlog, reviewBlog } from "../services/blog.service.js";
+import {
+  createBlog,
+  getAllDataForAdmin,
+  updateBlog,
+} from "../services/admin.service.js";
+import { deleteBlog, reviewBlog } from "../services/admin.service.js";
 const router = express.Router();
 
 router.get(
@@ -37,6 +41,15 @@ router.delete(
     next();
   },
   deleteBlog
+);
+
+router.patch(
+  "/blog/update/:id",
+  (req, res, next) => {
+    console.log(`PATCH /blog/update/${id}`);
+    next();
+  },
+  updateBlog
 );
 
 export default router;
