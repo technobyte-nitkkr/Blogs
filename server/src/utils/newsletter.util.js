@@ -1,4 +1,4 @@
-import mailSender from '../utils/mailSender.js'
+import mailSender from './mailSender.js'
 import User from '../model/user.js'
 import dotenv from 'dotenv';
 dotenv.config();

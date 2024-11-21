@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import HomeLayout from "../../layout/HomeLayout";
 import "./SingleBlog.css";
@@ -10,9 +10,55 @@ import { Link } from "react-router-dom";
 
 export default function SingleBlog({ title }) {
   const { id } = useParams();
-  const blogId = parseInt(id, 10); // for now. later use useEffect
-  const blog = blogs[blogId];
+  const [blog, setBlog] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchBlog = async () => {
+      try {
+        console.log("hi");
+        const response = await fetch(
+          `${process.env.REACT_APP_BACKEND_URL}/blog/search/${id}`
+        );
+        console.log(response);
+        if (!response.ok) {
+          throw new Error(`Error fetching blog`);
+        }
+        const data = await response.json();
+        setBlog(data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchBlog();
+  }, [id]);
+
   console.log(blog);
+
+  if (loading) {
+    return (
+      <HomeLayout>
+        <div className="main-background"></div>
+        <div className="blog-content-wrapper">
+          <h1 className="blog-title">Loading...</h1>
+        </div>
+      </HomeLayout>
+    );
+  }
+
+  if (error) {
+    return (
+      <HomeLayout>
+        <div className="main-background"></div>
+        <div className="blog-content-wrapper">
+          <h1 className="blog-title">Error: {error}</h1>
+        </div>
+      </HomeLayout>
+    );
+  }
 
   if (!blog) {
     return (
@@ -82,9 +128,7 @@ export default function SingleBlog({ title }) {
         </div>
 
         <div className="blog-image-section">
-          <p className="blog-paragraph">
-            {blog.description}
-          </p>
+          <p className="blog-paragraph">{blog.description}</p>
         </div>
 
         {/* TODO: Interaction Section is incomplete, add option to add comments and view comments*/}
