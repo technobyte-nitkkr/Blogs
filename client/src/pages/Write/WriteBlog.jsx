@@ -22,7 +22,7 @@ import {
 
 import "@mdxeditor/editor/style.css";
 import Footer from "../../components/Footer";
-import Navbar from "../../components/Navbar";
+import Navbar from "../../components/Navbar.jsx";
 
 export default function WriteBlog() {
   // TODO: check of id in useParams. if id found, check the user if user have enough rights then allow the user to edit this blog send update/create request accordingly to the backend server

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Navbar({ onSearch }) {
   const [searchTerm, setSearchTerm] = useState("");
@@ -30,19 +31,23 @@ function Navbar({ onSearch }) {
 
       <div className="flex items-center justify-between w-full md:w-[80vw]">
         <div className="hidden md:flex gap-8 items-center text-sm md:text-base font-light ml-4">
-          <a href="#topPics" className="hover:text-stone-300">
+          <a href="/#topPics" className="hover:text-stone-300">
             Top Pics
           </a>
-          <a href="/about-us" className="hover:text-stone-300">
+          <Link to="/about-us" className="hover:text-stone-300">
             About Us
-          </a>
-          <a href="/write" className="hover:text-stone-300">
+          </Link>
+          <Link to="/write" className="hover:text-stone-300">
             Write
-          </a>
+          </Link>
         </div>
 
         <div className="md:flex items-center ">
-          <div className={`${menuOpen ? "hidden" : "block"} flex items-center justify-between md:w-[20vw]`}>
+          <div
+            className={`${
+              menuOpen ? "hidden" : "block"
+            } flex items-center justify-between md:w-[20vw]`}
+          >
             <form className="flex items-center bg-gray-800 rounded-3xl border border-neutral-600 px-4 py-1 w-full">
               <img
                 loading="lazy"
@@ -65,12 +70,14 @@ function Navbar({ onSearch }) {
             aria-label="Notifications"
             className="bg-transparent border-none p-0 ml-4 hidden md:block"
           >
-            <img
-              loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/81014a5be615d9cf0f59dd6ceb10aa64ca1b93b4ad87b38514daba0dc57ae184?apiKey=cb0dbcd120c84cf4a6cf9d039ebac0a2&"
-              alt="Notifications"
-              className="w-[20px] md:w-[23px]"
-            />
+            <Link to="/dashboard">
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/81014a5be615d9cf0f59dd6ceb10aa64ca1b93b4ad87b38514daba0dc57ae184?apiKey=cb0dbcd120c84cf4a6cf9d039ebac0a2&"
+                alt="Notifications"
+                className="w-[20px] md:w-[23px]"
+              />
+            </Link>
           </button>
         </div>
       </div>
@@ -85,13 +92,22 @@ function Navbar({ onSearch }) {
 
       {menuOpen && (
         <div className="flex flex-row z-30 absolute right-0 top-2 gap-10 w-[80vw] bg-custom-black p-4 rounded-lg md:hidden">
-          <a href="#topPics" className="text-sm text-stone-300 hover:text-white py-1">
+          <a
+            href="#topPics"
+            className="text-sm text-stone-300 hover:text-white py-1"
+          >
             Top Pics
           </a>
-          <a href="/about-us" className="text-sm text-stone-300 hover:text-white py-1">
+          <a
+            href="/about-us"
+            className="text-sm text-stone-300 hover:text-white py-1"
+          >
             About Us
           </a>
-          <a href="/write" className="text-sm text-stone-300 hover:text-white py-1">
+          <a
+            href="/write"
+            className="text-sm text-stone-300 hover:text-white py-1"
+          >
             Write
           </a>
         </div>

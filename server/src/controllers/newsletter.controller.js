@@ -9,8 +9,8 @@ const router = express.Router();
 
 router.get("/", getAllUsers);
 
-router.get("/email", mailer);
+router.get("/email", mailer); // TODO: this might be removed
 
-router.post("/newsletter", sendMailToSubscribedUsers);
+router.post("/", sendMailToSubscribedUsers);
 
 export default router;

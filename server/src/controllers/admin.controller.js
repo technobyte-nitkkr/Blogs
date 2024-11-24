@@ -37,6 +37,7 @@ router.post(
 router.delete(
   "/blog/delete/:id",
   (req, res, next) => {
+    const { id } = req.params;
     console.log(`DELETE /blog/delete/${id}`);
     next();
   },
@@ -46,6 +47,7 @@ router.delete(
 router.patch(
   "/blog/update/:id",
   (req, res, next) => {
+    const { id } = req.params;
     console.log(`PATCH /blog/update/${id}`);
     next();
   },

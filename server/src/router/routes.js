@@ -6,8 +6,8 @@ import adminRoutes from "../controllers/admin.controller.js";
 
 function routes(app) {
   app.get("/health", (req, res) => {
-    console.log("GET /");
-    res.send("Server is up and running");
+    console.log("GET /health");
+    return res.status(200).json({ message: "Server is up and running" });
   });
   app.use("/newsletter", adminMiddleware, newsRoutes);
   app.use("/blog", userMiddleware, blogsRoutes);
