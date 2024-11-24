@@ -2,22 +2,24 @@ import Blog from "../model/blog.js";
 
 const getAllDataForAdmin = async (req, res) => {
   try {
-    const published_blogs = await Blog.find({ review: "approved" });
-    const updated_review = await Blog.find({ review: "update" });
-    const review = await Blog.find({ review: "pending" });
+    const publishedBlogs = await Blog.find({ review: "approved" }).lean();
+    const updatedReview = await Blog.find({ review: "update" }).lean();
+    const review = await Blog.find({ review: "pending" }).lean();
 
     return res.status(200).json({
       success: true,
       message: "Admin data fetched successfully",
-      published_blogs,
-      updated_review,
-      review,
+      data: {
+        publishedBlogs,
+        updatedReview,
+        review,
+      },
     });
   } catch (err) {
     console.error("Error fetching admin data:", err.message);
     return res.status(500).json({
       success: false,
-      message: err.message,
+      message: "Internal Server Error",
     });
   }
 };
@@ -26,132 +28,115 @@ const createBlog = async (req, res) => {
   try {
     const { title, content, image, description } = req.body;
 
-    console.log("Creating a new blog post with the following data:", {
-      title,
-      content,
-      image,
-      description,
-    });
-
     if (!title || !content) {
-      console.log("Title or content missing");
       return res
         .status(400)
-        .json({ message: "Title and content are required" });
+        .json({ message: "Title and content are required." });
     }
 
     const newBlog = new Blog({
       title,
       content,
-      image: image || "", // image type to be decided later
-      description: description || "", // description = summary of blog
+      image: image || "",
+      description: description || "",
       review: "pending",
       reviewMessage: "",
       tags: [],
       comments: [],
-      date: Date.now(),
+      date: new Date(),
     });
 
     await newBlog.save();
 
-    console.log("Blog post created successfully:", newBlog);
-
     res.status(201).json({
-      message: "Blog post created successfully",
+      success: true,
+      message: "Blog post created successfully.",
       blog: newBlog,
     });
   } catch (error) {
     console.error("Error creating blog post:", error);
-    res.status(500).json({ message: "Error creating blog post" });
+    res.status(500).json({
+      success: false,
+      message: "Error creating blog post.",
+    });
   }
 };
 
 const deleteBlog = async (req, res) => {
   try {
-    const blogId = req.params.id;
-    const deletedBlog = await Blog.findByIdAndDelete(blogId);
+    const { id } = req.params;
+    if (!id) {
+      return res.status(400).json({ message: "Blog ID is required." });
+    }
+
+    const deletedBlog = await Blog.findByIdAndDelete(id);
+
     if (!deletedBlog) {
       return res.status(404).json({
         success: false,
-        message: "Blog not found",
+        message: "Blog not found.",
       });
     }
-    res.json({
+
+    res.status(200).json({
       success: true,
-      message: "Blog deleted successfully",
+      message: "Blog deleted successfully.",
     });
   } catch (error) {
     console.error("Error deleting blog:", error);
     res.status(500).json({
       success: false,
-      message: "Error deleting Blog",
+      message: "Internal Server Error.",
     });
   }
 };
 
 const reviewBlog = async (req, res) => {
-  const blogId = req.params.id;
+  const { id } = req.params;
   const { reviewStatus, reviewMessage } = req.body;
 
   try {
-    const blog = await Blog.findById(blogId);
+    const blog = await Blog.findById(id);
+
     if (!blog) {
-      return res.status(404).json({ message: "Blog not found" });
+      return res.status(404).json({ message: "Blog not found." });
     }
-
-    //   const user = req.user;
-    //   if (!user) {
-    //     return res.status(404).json({ message: 'User not found' });
-    //   }
-
-    //   if (user.role != 'admin') {
-    //     return res.status(403).json({ message: 'Only admins can review blogs' });
-    //   }
-
-    let message = "";
 
     switch (reviewStatus) {
       case "pending":
         blog.review = "pending";
         blog.reviewMessage = "";
-        message = "Blog review pending.";
         break;
       case "approved":
         blog.review = "approved";
         blog.reviewMessage = "";
-        //function call for publishing the blog
-        message = "Blog approved and published for everyone.";
         break;
       case "update":
         if (!reviewMessage || reviewMessage.trim() === "") {
-          return res
-            .status(400)
-            .json({ message: "Review message is required for update" });
+          return res.status(400).json({
+            message: "Review message is required for status 'update'.",
+          });
         }
         blog.review = "update";
         blog.reviewMessage = reviewMessage;
-        message = `Blog requires updates. Please review the comments: ${blog.reviewMessage}`;
         break;
       default:
-        return res.status(400).json({ message: "Invalid review status" });
+        return res.status(400).json({ message: "Invalid review status." });
     }
 
     await blog.save();
 
-    //for updating the blog
-    const updatedBlog = await Blog.findByIdAndUpdate(
-      blogId,
-      {
-        review: blog.review,
-        isPublished: blog.isPublished,
-        reviewMessage: blog.reviewMessage,
-      },
-      { new: true }
-    );
-
-    res.json({ message, updatedBlog });
+    res.status(200).json({
+      success: true,
+      message: "Blog review updated successfully.",
+      updatedBlog: blog,
+    });
   } catch (error) {
-    res.status(500).json({ message: "Internal server error", error });
+    console.error("Error reviewing blog:", error);
+    res.status(500).json({
+      success: false,
+      message: "Internal Server Error.",
+    });
   }
 };
 
@@ -160,10 +145,18 @@ const updateBlog = async (req, res) => {
     const { id } = req.params;
     const { title, content, image } = req.body;
 
+    if (!id) {
+      return res.status(400).json({ message: "Blog ID is required." });
+    }
+
     const data = {};
-    if (title !== undefined) data.title = title;
-    if (content !== undefined) data.content = content;
-    if (image !== undefined) data.image = image;
+    if (title) data.title = title;
+    if (content) data.content = content;
+    if (image) data.image = image;
+
+    if (Object.keys(data).length === 0) {
+      return res.status(400).json({ message: "No update data provided." });
+    }
 
     const updatedBlog = await Blog.findByIdAndUpdate(id, data, {
       new: true,
@@ -171,13 +164,20 @@ const updateBlog = async (req, res) => {
     });
 
     if (!updatedBlog) {
-      return res.status(404).json({ message: "Blog not found!" });
+      return res.status(404).json({ message: "Blog not found." });
     }
 
-    return res.status(200).json({ message: "Blog Updated Successfully!" });
+    res.status(200).json({
+      success: true,
+      message: "Blog updated successfully.",
+      updatedBlog,
+    });
   } catch (error) {
-    console.error("Error updating blog:", error.message);
-    return res.status(500).json({ message: "Internal Server Error" });
+    console.error("Error updating blog:", error);
+    res.status(500).json({
+      success: false,
+      message: "Internal Server Error.",
+    });
   }
 };
 

@@ -25,6 +25,7 @@ router.patch(
   reviewBlog
 );
 
+// TODO: test
 router.post(
   "/blog/create",
   (req, res, next) => {
@@ -44,6 +45,7 @@ router.delete(
   deleteBlog
 );
 
+// TODO: test
 router.patch(
   "/blog/update/:id",
   (req, res, next) => {
