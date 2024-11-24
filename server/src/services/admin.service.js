@@ -1,4 +1,5 @@
 import Blog from "../model/blog.js";
+import Tag from "../model/tags.js";
 
 const getAllDataForAdmin = async (req, res) => {
   try {
@@ -26,12 +27,24 @@ const getAllDataForAdmin = async (req, res) => {
 
 const createBlog = async (req, res) => {
   try {
-    const { title, content, image, description } = req.body;
+    const { title, content, image, description, tags } = req.body;
 
     if (!title || !content) {
       return res
         .status(400)
         .json({ message: "Title and content are required." });
+    }
+
+    let tagIds = [];
+    if (tags && Array.isArray(tags)) {
+      for (const tagName of tags) {
+        let tag = await Tag.findOne({ name: tagName });
+        if (!tag) {
+          tag = new Tag({ name: tagName });
+          await tag.save();
+        }
+        tagIds.push(tag._id);
+      }
     }
 
     const newBlog = new Blog({
@@ -41,7 +54,7 @@ const createBlog = async (req, res) => {
       description: description || "",
       review: "pending",
       reviewMessage: "",
-      tags: [],
+      tags: tagIds,
       comments: [],
       date: new Date(),
     });
