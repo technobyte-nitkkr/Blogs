@@ -1,48 +1,83 @@
 import Card from "../../components/Home/Card/CardLatest";
 import HomeNav from "../../components/Home/HomeNav/HomeNav";
-import HomeLayout from "../../layout/HomeLayout";
+import data from "../../../data/blogs";
 import PostCard from "../../components/Home/Card/PostCard";
 import HeroSection from "../../components/Home/HeroSection/HeroSection";
-// import LatestCard from "./LatestCard";
 import WriteForUs from "../../components/Home/WriteForUs/WriteForUs";
 import Navbar from "../../components/Navbar";
-export default function Landing({ title }) {
-    return (
-       <>
-            <Navbar />
-            <div className="flex flex-col justify-center items-center h-full w-full overflow-hidden bg-black">
-                <div className="w-[95%]">
-                    <div className="border-b-2" style={{
-                        borderImageSource: 'linear-gradient(141.07deg, #D51B10 3.32%, #00336C 95.71%)',
-                        borderImageSlice: 1,
-                    }}>
-                        <HeroSection />
-                    </div>
-                    <div className="border-b-2 my-8" style={{
-                        borderImageSource: 'linear-gradient(141.07deg, #D51B10 3.32%, #00336C 95.71%)',
-                        borderImageSlice: 1,
+import Footer from "../../components/Footer";
+import blogs from "../../../data/blogs";
+import { Link } from "react-router-dom";
+export default function Landing({ title }) { {/** remove this title */}
+  return (
+    <>
+      <Navbar />
+      <div className="flex flex-col justify-center items-center h-full w-full overflow-hidden ">
+        <div className="w-[100%] md:mb-[150px]">
+          <div
+            className="border-b-2"
+            style={{
+              borderImageSource:
+                "linear-gradient(141.07deg, #00336C 3.32%, #D51B10 95.71%)",
+              borderImageSlice: 1,
+            }}
+          >
+            <HeroSection />
+          </div>
 
-                    }}>
-                        <HomeNav />
-                    </div>
-                    <div>
-                        <PostCard logo={"/Profilelogo.png"} image={"/CardImg.png"} author={"Matthew"} category="Free Factor" title={"How Did a Generation Become So Stupid "} description={"Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum ratione nesciunt sunt quaerat vero. At nihil ad repellendus quidem voluptas."} date={"Jun 8"} likes={"10.5K"} comments={241} />
-                        <PostCard logo={"/Profilelogo.png"} image={"/CardImg.png"} author={"Matthew"} category="Free Factor" title={"How Did a Generation Become So Stupid "} description={"Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum ratione nesciunt sunt quaerat vero. At nihil ad repellendus quidem voluptas."} date={"Jun 8"} likes={"10.5K"} comments={241} />
-                        <PostCard logo={"/Profilelogo.png"} image={"/CardImg.png"} author={"Matthew"} category="Free Factor" title={"How Did a Generation Become So Stupid "} description={"Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum ratione nesciunt sunt quaerat vero. At nihil ad repellendus quidem voluptas."} date={"Jun 8"} likes={"10.5K"} comments={241} />
-                    </div>
-                    <h1 className="text-white text-3xl mb-2 text-left">Latest</h1>
-                    <div className="bg-[#0B0D18] w-full h-full flex flex-wrap items-center justify-evenly py-10  gap-y-6 border-t-2 border-red-600 p-4 rounded-md">
-                        <Card logo={"/Profilelogo.png"} author={"Matthew"} category="Free Factor" title={"How Did a Generation Become So Stupid? "} date={"Jun 8"} likes={"10.5K"} comments={241} />
-                        <Card logo={"/Profilelogo.png"} author={"Matthew"} category="Free Factor" title={"How Did a Generation Become So Stupid? "} date={"Jun 8"} likes={"10.5K"} comments={241} />
-                        <Card logo={"/Profilelogo.png"} author={"Matthew"} category="Free Factor" title={"How Did a Generation Become So Stupid? "} date={"Jun 8"} likes={"10.5K"} comments={241} />
-                        <Card logo={"/Profilelogo.png"} author={"Matthew"} category="Free Factor" title={"How Did a Generation Become So Stupid? "} date={"Jun 8"} likes={"10.5K"} comments={241} />
-                        <Card logo={"/Profilelogo.png"} author={"Matthew"} category="Free Factor" title={"How Did a Generation Become So Stupid? "} date={"Jun 8"} likes={"10.5K"} comments={241} />
-                        <Card logo={"/Profilelogo.png"} author={"Matthew"} category="Free Factor" title={"How Did a Generation Become So Stupid? "} date={"Jun 8"} likes={"10.5K"} comments={241} />
-                    </div>
-                    <WriteForUs />
-
-                </div>
+          <div></div>
+          <div className="w-[95%] mt-5">
+            <HomeNav />
+            <div id="topPics">
+              {data.map((blog, id) => (
+                <Link to={`/blog/${id}`}>
+                  <PostCard
+                    key={id}
+                    logo={blog.logo}
+                    image={blog.image}
+                    author={blog.author}
+                    category={blog.category}
+                    title={blog.title}
+                    description={blog.content}
+                    date={blog.date.toLocaleDateString("en-US", {
+                      month: "long",
+                      day: "numeric",
+                    })}
+                    likes={blog.likes}
+                    comments={blog.comments.length}
+                  />
+                </Link>
+              ))}
             </div>
-            </>
-    );
+            <div className="ml-[5%]">
+              <h1 className="text-white text-3xl ml-[7%] mb-2 text-left">
+                Latest
+              </h1>
+              <div className="bg-black w-full h-full flex flex-wrap items-center justify-evenly py-10  gap-y-6 border-t-2 border-b-2 bg-opacity-0 mb-[-30px] relative z-50 border-t-red-600 border-b-blue-500 p-4 rounded-md">
+                {blogs.map((blog, id) => (
+                  <Link to={`/blog/${id}`}>
+                    <Card
+                      key={id}
+                      logo={blog.logo}
+                      author={blog.author}
+                      category={blog.category}
+                      title={blog.title}
+                      date={blog.date.toLocaleDateString("en-US", {
+                        month: "long",
+                        day: "numeric",
+                      })}
+                      likes={blog.likes}
+                      comments={blog.comments.length}
+                    />
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+          <WriteForUs />
+        </div>
+      </div>
+      <Footer />
+    </>
+  );
 }

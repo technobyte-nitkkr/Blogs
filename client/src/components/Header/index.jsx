@@ -1,9 +1,9 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faMagnifyingGlass,
-  faUserCircle,
-} from "@fortawesome/free-solid-svg-icons"; // Import the user circle icon
+// import {
+  // faMagnifyingGlass,
+  // faUserCircle,
+// } from "@fortawesome/free-solid-svg-icons"; // Import the user circle icon
 
 export default function Header() {
   return (

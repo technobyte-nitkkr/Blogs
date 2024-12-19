@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-
+import React, { useState } from "react";
+// This page might be deleted
 function Navbar({ onSearch }) {
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleSearchChange = (e) => {
     const value = e.target.value;
     setSearchTerm(value);
-    onSearch(value); 
+    onSearch(value);
   };
 
   return (
@@ -23,9 +23,15 @@ function Navbar({ onSearch }) {
             <div className="self-stretch my-auto">Blogs</div>
           </div>
           <div className="flex gap-10 items-center self-stretch my-auto text-base font-light leading-8 text-center min-w-[240px]">
-            <a href="#top-pics" className="self-stretch my-auto">Top Pics</a>
-            <a href="#about-us" className="self-stretch my-auto">About Us</a>
-            <a href="#write" className="self-stretch my-auto">Write</a>
+            <a href="#top-pics" className="self-stretch my-auto">
+              Top Pics
+            </a>
+            <a href="#about-us" className="self-stretch my-auto">
+              About Us
+            </a>
+            <a href="#write" className="self-stretch my-auto">
+              Write
+            </a>
           </div>
         </nav>
         <div className="flex gap-6 items-center text-xs font-light leading-8 text-center whitespace-nowrap min-w-[240px] text-stone-300">
@@ -47,7 +53,10 @@ function Navbar({ onSearch }) {
               />
             </div>
           </form>
-          <button aria-label="Notifications" className="bg-transparent border-none p-0">
+          <button
+            aria-label="Notifications"
+            className="bg-transparent border-none p-0"
+          >
             <img
               loading="lazy"
               src="https://cdn.builder.io/api/v1/image/assets/TEMP/81014a5be615d9cf0f59dd6ceb10aa64ca1b93b4ad87b38514daba0dc57ae184?apiKey=cb0dbcd120c84cf4a6cf9d039ebac0a2&"

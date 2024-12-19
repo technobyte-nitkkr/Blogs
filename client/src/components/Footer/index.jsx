@@ -1,90 +1,47 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faTwitter,
-  faFacebookF,
   faLinkedinIn,
-  faYoutube,
-  faTwitch,
-  faTiktok,
+  faInstagram,
   faGithub,
 } from "@fortawesome/free-brands-svg-icons"; // Social media icons
 
 export default function Footer() {
   return (
     <footer
-      className="text-gray-400 py-4 px-8"
+      className="text-gray-400 py-4 px-8 bottom-0 relative w-[100%]"
       style={{ backgroundColor: "#161B22" }}
     >
       <div className="flex justify-between items-center">
         {/* Left Side: Text and Links */}
         <div className="flex space-x-6 text-sm">
           <span>© 2024 Techspardha, Inc.</span>
-          <a href="/" className="hover:text-white">
-            Terms
-          </a>
-          <a href="/" className="hover:text-white">
-            Privacy (Updated 10/2024)
-          </a>
-          <a href="/" className="hover:text-white">
-            Site Map
-          </a>
-          <a href="/" className="hover:text-white">
+          <Link to="/" className="hover:text-white"> {/** add a link to our git presentation */}
             What is Git?
-          </a>
+          </Link>
         </div>
 
         {/* Right Side: Social Media Icons */}
         <div className="flex space-x-4">
-          <a
-            href="https://twitter.com"
-            aria-label="Twitter"
+          <Link to="https://www.instagram.com/technobyte_nitkkr/"
+            aria-label="Instagram"
             className="hover:text-white"
           >
-            <FontAwesomeIcon icon={faTwitter} size="lg" />
-          </a>
-          <a
-            href="https://facebook.com"
-            aria-label="Facebook"
-            className="hover:text-white"
-          >
-            <FontAwesomeIcon icon={faFacebookF} size="lg" />
-          </a>
-          <a
-            href="https://linkedin.com"
+            <FontAwesomeIcon icon={faInstagram} size="lg" />
+          </Link>
+          <Link to="https://www.linkedin.com/company/technobyte-nitkkr/"
             aria-label="LinkedIn"
             className="hover:text-white"
           >
             <FontAwesomeIcon icon={faLinkedinIn} size="lg" />
-          </a>
-          <a
-            href="https://youtube.com"
-            aria-label="YouTube"
-            className="hover:text-white"
-          >
-            <FontAwesomeIcon icon={faYoutube} size="lg" />
-          </a>
-          <a
-            href="https://twitch.tv"
-            aria-label="Twitch"
-            className="hover:text-white"
-          >
-            <FontAwesomeIcon icon={faTwitch} size="lg" />
-          </a>
-          <a
-            href="https://tiktok.com"
-            aria-label="TikTok"
-            className="hover:text-white"
-          >
-            <FontAwesomeIcon icon={faTiktok} size="lg" />
-          </a>
-          <a
-            href="https://github.com"
+          </Link>
+          <Link to="https://github.com/technobyte-nitkkr/"
             aria-label="GitHub"
             className="hover:text-white"
           >
             <FontAwesomeIcon icon={faGithub} size="lg" />
-          </a>
+          </Link>
         </div>
       </div>
     </footer>

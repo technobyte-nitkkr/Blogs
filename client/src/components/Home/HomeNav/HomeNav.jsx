@@ -5,10 +5,19 @@ const HomeNav = () => {
   const tabs = ["Top Picks", "Explore", "Trending", "Latest"];
 
   return (
-    <div className="w-full  ">
-        <div className=" md:flex md:justify-around grid grid-cols-2 gap-4 px-4"  style={{ justifyContent: "space-evenly", justifyItems: "center" }}>
-
-         {tabs.map((tab) => (
+    <div
+      className=" mx-auto w-[95%] border-b-2 mb-4"
+      style={{
+        borderImageSource:
+          "linear-gradient(141.07deg, #00336C 3.32%, #D51B10 95.71%)",
+        borderImageSlice: 1,
+      }}
+    >
+      <div
+        className=" md:flex md:justify-around grid grid-cols-2 gap-4 px-4"
+        style={{ justifyContent: "space-evenly", justifyItems: "center" }}
+      >
+        {tabs.map((tab) => (
           <div
             key={tab}
             className="px-4 py-2 text-lg font-mono cursor-pointer transition-colors duration-300 ease-in-out"
