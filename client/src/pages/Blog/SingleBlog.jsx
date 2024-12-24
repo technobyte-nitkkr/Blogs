@@ -5,7 +5,6 @@ import "./SingleBlog.css";
 import profileImage from "./profile.png";
 import likeIcon from "../../assets/like-icon.png";
 import commentIcon from "../../assets/comment-icon.png";
-import blogs from "../../../data/blogs";
 import { Link } from "react-router-dom";
 
 export default function SingleBlog({ title }) {
@@ -17,11 +16,8 @@ export default function SingleBlog({ title }) {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        console.log("hi");
-        const response = await fetch(
-          `${process.env.REACT_APP_BACKEND_URL}/blog/search/${id}`
-        );
-        console.log(response);
+        const url = `${import.meta.env.VITE_BACKEND_URL}/blog/${id}`;
+        const response = await fetch(url);
         if (!response.ok) {
           throw new Error(`Error fetching blog`);
         }
@@ -35,8 +31,6 @@ export default function SingleBlog({ title }) {
     };
     fetchBlog();
   }, [id]);
-
-  console.log(blog);
 
   if (loading) {
     return (
@@ -54,7 +48,7 @@ export default function SingleBlog({ title }) {
       <HomeLayout>
         <div className="main-background"></div>
         <div className="blog-content-wrapper">
-          <h1 className="blog-title">Error: {error}</h1>
+          <h1 className="blog-title">Error while fetching the blog</h1>
         </div>
       </HomeLayout>
     );
@@ -88,10 +82,7 @@ export default function SingleBlog({ title }) {
               <div className="author-details">
                 <p className="author-name">{blog.author}</p>
                 <p className="author-date">
-                  {blog.date.toLocaleDateString("en-US", {
-                    month: "long",
-                    day: "numeric",
-                  })}
+                  {new Date(blog.date).toISOString().split("T")[0]}
                 </p>
               </div>
             </div>

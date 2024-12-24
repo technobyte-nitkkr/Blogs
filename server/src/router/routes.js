@@ -10,7 +10,7 @@ function routes(app) {
     return res.status(200).json({ message: "Server is up and running" });
   });
   app.use("/newsletter", adminMiddleware, newsRoutes);
-  app.use("/blog", userMiddleware, blogsRoutes);
+  app.use("/blog", blogsRoutes); // add userMiddleware here
   app.use("/admin", adminMiddleware, adminRoutes);
 }
 

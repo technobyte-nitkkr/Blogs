@@ -37,7 +37,6 @@ const handleBlogSearch = async (req, res) => {
         path: "comments",
         populate: { path: "user", model: "User" },
       });
-
     res.status(200).json(requiredBlogs);
   } catch (error) {
     console.error("Error during blog search:", error);
@@ -61,7 +60,6 @@ const returnBlogById = async (req, res) => {
     }
     return res.status(200).json(blog);
   } catch (err) {
-    console.log(err.message);
     return res.status(500).json({ message: "Internal server error" });
   }
 };

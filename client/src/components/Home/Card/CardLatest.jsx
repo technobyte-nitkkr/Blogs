@@ -3,6 +3,7 @@ import React from "react";
 function Card({
   logo,
   title,
+  image,
   description,
   date,
   likes,
@@ -28,7 +29,7 @@ function Card({
         }}
       >
         <div className="h-[346px] w-full">
-          <img src="CardImg.png" className="w-full h-[196px]" />
+          <img src={image ||"https://revenuearchitects.com/wp-content/uploads/2017/02/Blog_pic-1030x584.png"} className="w-full h-[196px] border-0" />
           <div className="h-[126px] w-full px-6 flex ">
             <div className="p-4 w-[324px]">
               <div className="flex items-center text-sm text-gray-400 mb-1 space-x-2">
