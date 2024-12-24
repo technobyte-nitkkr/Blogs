@@ -1,0 +1,106 @@
+.blog-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  top: 150px;
+  margin-top: 20px;
+}
+
+.blog-card {
+  width: 853px;
+  height: 182px;
+  border-radius: 10px;
+  border: 1px solid #5e5e5e;
+  background: #151825;
+  display: flex;
+  margin-bottom: 20px; 
+}
+
+.blog-content {
+  padding: 15px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-content h3 {
+  width: 97px;
+  height: 38px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 38.4px;
+  letter-spacing: 0.134px;
+  color: #ffffff;
+}
+
+.blog-content p {
+  width: 460px;
+  height: 38px;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.2px;
+  letter-spacing: 0.134px;
+  text-align: left;
+  color: #ffffff;
+  margin-top: 10px;
+}
+
+.edit-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.edit-section span {
+  width: 128px;
+  height: 14px;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.4px;
+  letter-spacing: 0.134px;
+  text-align: left;
+  color: #75777c;
+}
+
+.edit-btn {
+  background-color: #3a6ff7;
+  width: 87px;
+  height: 35px;
+  border-radius: 100px;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.blog-image {
+  width: 270px;
+  height: 180px;
+  left: 1013px;
+  gap: 0px;
+  border-radius: 0px 10px 10px 0px;
+  opacity: 0px;
+  background: linear-gradient(to right, rgba(21, 24, 37, 0.7), rgba(21, 24, 37, 0));
+  z-index: 1;
+}
+
+.blog-image img {
+  width: 270px;
+  height: 180px;
+  left: 1013px;
+  gap: 0px;
+  border-radius: 0px 10px 10px 0px;
+  opacity: 0px;
+  object-fit: cover;
+  filter: blur(2px);
+}

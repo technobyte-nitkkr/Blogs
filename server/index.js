@@ -4,56 +4,63 @@ import session from "express-session";
 import passport from "passport";
 import cors from "cors";
 import dotenv from "dotenv";
-import routes from "./src/routes.js";
-
-// Load environment variables from .env file
-dotenv.config();
-
-// CORS Config
-const corsOptions = {
-    origin: process.env.CORS_ORIGIN || 'http://127.0.0.1', // Specify your allowed frontend origins as an environment variable
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    optionsSuccessStatus: 204 // Some legacy browsers (IE11, various SmartTVs) choke on 204
-};
+import routes from "./src/router/routes.js";
+import Blog from "./src/model/blog.js";
 
 // Initialize Express app
 const app = express();
-app.use(session({ secret: 'YOUR_SESSION_SECRET', resave: false, saveUninitialized: false }));
 
-app.use(passport.initialize());
-app.use(passport.session());
+// Load environment variables from .env file
+dotenv.config();
 const PORT = process.env.PORT || 3000;
 const DB = process.env.MONGODB_HOST;
+
+// CORS Config
+const corsOptions = {
+  origin: process.env.CORS_ORIGIN || "*",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  optionsSuccessStatus: 204, // Some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+
+app.use(
+  session({
+    secret: "YOUR_SESSION_SECRET",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(cors(corsOptions));
 app.use(express.json()); // Parse JSON bodies for this app
 
-// Basic route
-
-
 // Connect to MongoDB
 const connectDB = async () => {
-    try {
-        await mongoose.connect(DB, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
-        });
-        console.log("Connection to MongoDB successful");
-    } catch (error) {
-        console.error("MongoDB connection error:", error);
-        process.exit(1); // Exit process with failure
-    }
+  try {
+    console.log("Attempting to connect to MongoDB...");
+    await mongoose.connect(DB, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log("Connection to MongoDB successful");
+  } catch (error) {
+    console.error("MongoDB connection error: ", error);
+    process.exit(1); // Exit process with failure
+  }
 };
 
 // Start server and connect to database
 const startServer = async () => {
-    await connectDB();
+  console.log("Starting server...");
+  await connectDB();
 
-    app.listen(PORT, "0.0.0.0", () => {
-        console.log(`Server running on port ${PORT}`);
-    });
+  app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Server running on port ${PORT}`);
+  });
 
-    routes(app);
+  console.log("Initializing routes...");
+  routes(app);
 };
 
 startServer();

@@ -1,0 +1,229 @@
+body {
+    background-color: #0B0D18;
+    margin: 0;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.main-background {
+    position: absolute;
+    height: 1117px;
+    top: 55px;
+    left: 6px;
+  
+    background-size: cover;
+    width: 100%; 
+
+}
+
+.blog-content-wrapper {
+    position: relative;
+    width: 90%; 
+    max-width: 796px; 
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.blog-header {
+    margin-top: 20px; 
+    display: flex;
+    flex-direction: column;
+    gap: 20px; 
+    
+}
+
+.blog-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    font-size: 2.5rem;
+    text-align: center;
+    color: #fff;
+    max-width: 100%; 
+}
+
+.blog-author-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color:  #BFA1A1;
+    border-width: 1px, 0px, 1px, 0px;
+    width: 100%;
+    max-width: 100%;
+}
+
+.author-profile {
+    display: flex;
+    align-items: center;
+}
+
+.profile-image {
+    width: 40px; 
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.author-name {
+    font-family: 'Ubuntu', sans-serif;
+    color:  #ead6d6;
+}
+
+.author-date {
+    font-family: 'Ubuntu', sans-serif;
+    color:  #BFA1A1;
+    margin-top: 4px; 
+}
+
+.interaction-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;  
+}
+
+.horizontal-line {
+    width: 100%;
+    height: 1px;
+    background-color: #BFA1A1;
+    margin: 10px 0;
+}
+
+.likes-comments {
+    display: flex;
+    justify-content: flex-start; 
+    width: 100%; 
+    align-items: center;
+    color: #BFA1A1;
+    gap: 20px; 
+
+}
+.icon-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #fff;
+}
+.icon-container img {
+    width: 20px;
+    height: 20px;
+    filter: brightness(1) invert(1); 
+}
+
+.interaction-icon {
+    width: 20px;
+    height: 20px;
+}
+.edit-button {
+    
+    background-color: #007BFF; 
+    border: none;
+    color: white;
+    padding: 5px 15px; 
+    border-radius: 100px; 
+    cursor: pointer;
+    font-size: 14px; 
+    width: auto;
+    height: auto; 
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    gap: 8px;
+   
+}
+
+/* Blog Image Section */
+.blog-image-section {
+    width: 100%; 
+    height: auto; 
+    padding: 0 0 96px 0;
+    margin-top: 40px;
+}
+
+.blog-image img {
+    width: 100%;
+    height: auto;
+}
+
+/* Blog Paragraphs */
+.blog-paragraph {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 32px;
+    letter-spacing: -0.06em; 
+    color: #ffffff; 
+    padding: 10px; 
+  
+}
+
+/* Code Block */
+.code-block {
+    position: relative; 
+    height: 238px;
+    margin-top: 40px; 
+    border-radius: 16px;
+    border: 1px solid rgba(255, 0, 0, 0.38); 
+    background-color: #161B22;
+    width: 100%;
+    max-width: 796px;
+}
+
+.code-background {
+    width: 644px; 
+    height: 203px;
+    overflow: hidden; 
+    margin: 0 auto; 
+    background: #161B22; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 16px 0 0 0; 
+}
+
+@media screen and (max-width: 768px) {
+    .blog-header {
+        gap: 20px;
+        text-align: center;
+    }
+
+    .blog-title {
+        font-size: 2rem; 
+    }
+
+    .edit-button {
+        padding: 4px 10px; 
+        font-size: 12px; 
+    }
+
+    .likes-comments {
+        justify-content: center; 
+        gap: 15px;
+    }
+
+    .code-block {
+        font-size: 14px; 
+        padding: 8px; 
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .blog-title {
+        font-size: 1.8rem; 
+    }
+
+    .blog-author-info {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .edit-button {
+        width: 100%;
+        font-size: 0.85rem;
+    }
+
+    .likes-comments {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+}

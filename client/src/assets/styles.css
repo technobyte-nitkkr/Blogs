@@ -1,0 +1,8 @@
+@font-face {
+  font-family: "Type@31";
+  src: url("./assets/Type@31.ttf") format("truetype"); /* Adjust the path if necessary */
+}
+
+body {
+  font-family: "Type@31", sans-serif; /* Use the font in body or specific elements */
+}

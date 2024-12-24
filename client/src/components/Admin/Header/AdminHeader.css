@@ -1,0 +1,85 @@
+header {
+  width: 1470px;
+  height: 72px;
+  gap: 0px;
+  background-color: #010713;
+  border: 0px 0px 1px 0px;
+  border-bottom: 1px solid #717171;
+}
+
+.admin-header {
+  width: Fixed (1440px)px;
+  height: Hug (33px)px;
+  gap: 0px;
+  opacity: 0px;
+  font-family: 'JetBrains Mono', monospace;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #010713;
+  position: fixed;
+}
+  
+.logo h1 {
+  font-size: 1.8rem;
+  margin: 0;
+  padding-left: 50px;
+  font-family: 'JetBrains Mono', monospace;
+  color: #ffffff;
+}
+  
+.admin-nav {
+  display: flex;
+  gap: 30px;
+}
+  
+.admin-nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  position: relative;
+  transition: color 0.3s ease;
+}
+  
+  .admin-nav a:hover,
+  .admin-nav a:active {
+    color: #e5e5e5;
+  }
+  
+  /* Search Bar */
+  .admin-actions {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+  
+  .search-input {
+    background-color: #1f2232;
+    border: none;
+    border-radius: 25px;
+    padding: 5px 15px;
+    color: #ffffff;
+    width: 250px;
+    outline: none;
+    transition: width 0.3s ease;
+  }
+  
+  .search-input::placeholder {
+    color: #888888;
+  }
+  
+  .search-input:focus {
+    width: 200px;
+    background-color: #3a3a3a;
+  }
+  
+  .user-icon {
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 60px;
+  }
+  
+  .user-icon:hover {
+    background-color: #3a3a3a;
+  }

@@ -1,3 +1,5 @@
 # If someone wrongly installed dependencies in the root
 
 node_modules
+package-lock.json
+.env
