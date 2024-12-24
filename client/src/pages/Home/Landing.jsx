@@ -1,14 +1,58 @@
+import { useState, useEffect } from "react";
+import HomeLayout from "../../layout/HomeLayout";
 import Card from "../../components/Home/Card/CardLatest";
 import HomeNav from "../../components/Home/HomeNav/HomeNav";
-import data from "../../../data/blogs";
 import PostCard from "../../components/Home/Card/PostCard";
 import HeroSection from "../../components/Home/HeroSection/HeroSection";
 import WriteForUs from "../../components/Home/WriteForUs/WriteForUs";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
-import blogs from "../../../data/blogs";
 import { Link } from "react-router-dom";
-export default function Landing({ title }) { {/** remove this title */}
+export default function Landing() {
+  const [blogs, setBlogs] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchBlog = async () => {
+      try {
+        const url = `${import.meta.env.VITE_BACKEND_URL}/blog/`;
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error(`Error fetching blog`);
+        }
+        const data = await response.json();
+        setBlogs(data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchBlog();
+  }, []);
+
+  if (loading) {
+    return (
+      <HomeLayout>
+        <div className="main-background"></div>
+        <div className="blog-content-wrapper">
+          <h1 className="blog-title">Loading...</h1>
+        </div>
+      </HomeLayout>
+    );
+  }
+
+  if (error) {
+    return (
+      <HomeLayout>
+        <div className="main-background"></div>
+        <div className="blog-content-wrapper">
+          <h1 className="blog-title">Error while fetching the blog</h1>
+        </div>
+      </HomeLayout>
+    );
+  }
   return (
     <>
       <Navbar />
@@ -29,8 +73,8 @@ export default function Landing({ title }) { {/** remove this title */}
           <div className="w-[95%] mt-5">
             <HomeNav />
             <div id="topPics">
-              {data.map((blog, id) => (
-                <Link to={`/blog/${id}`}>
+              {blogs.map((blog, id) => (
+                <Link to={`/blog/${blog._id}`}>
                   <PostCard
                     key={id}
                     logo={blog.logo}
@@ -39,10 +83,7 @@ export default function Landing({ title }) { {/** remove this title */}
                     category={blog.category}
                     title={blog.title}
                     description={blog.content}
-                    date={blog.date.toLocaleDateString("en-US", {
-                      month: "long",
-                      day: "numeric",
-                    })}
+                    date={new Date(blog.date).toISOString().split("T")[0]}
                     likes={blog.likes}
                     comments={blog.comments.length}
                   />
@@ -55,17 +96,15 @@ export default function Landing({ title }) { {/** remove this title */}
               </h1>
               <div className="bg-black w-full h-full flex flex-wrap items-center justify-evenly py-10  gap-y-6 border-t-2 border-b-2 bg-opacity-0 mb-[-30px] relative z-50 border-t-red-600 border-b-blue-500 p-4 rounded-md">
                 {blogs.map((blog, id) => (
-                  <Link to={`/blog/${id}`}>
+                  <Link to={`/blog/${blog._id}`}>
                     <Card
                       key={id}
                       logo={blog.logo}
+                      image={blog.image}
                       author={blog.author}
                       category={blog.category}
                       title={blog.title}
-                      date={blog.date.toLocaleDateString("en-US", {
-                        month: "long",
-                        day: "numeric",
-                      })}
+                      date={new Date(blog.date).toISOString().split("T")[0]}
                       likes={blog.likes}
                       comments={blog.comments.length}
                     />

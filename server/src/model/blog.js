@@ -11,6 +11,8 @@ const blogSchema = mongoose.Schema({
   },
   image: {
     type: String,
+    default:
+      "https://revenuearchitects.com/wp-content/uploads/2017/02/Blog_pic-1030x584.png",
   },
   review: {
     type: String,
